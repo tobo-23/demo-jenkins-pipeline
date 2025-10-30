@@ -9,21 +9,21 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                echo '📦 Clonage du dépôt GitHub...'
+                echo ' Clonage du dépôt GitHub...'
                 checkout scm
             }
         }
 
         stage('Build & Test') {
             steps {
-                echo '🔨 Compilation et exécution des tests Maven...'
+                echo ' Compilation et exécution des tests Maven...'
                 sh 'mvn -B clean test'
             }
         }
 
         stage('Results') {
             steps {
-                echo '📊 Publication des résultats de test...'
+                echo ' Publication des résultats de test...'
                 junit '**/target/surefire-reports/*.xml'
             }
         }
@@ -32,13 +32,13 @@ pipeline {
     /* Bloc post : notifications et statut final */
     post {
         success {
-            echo '✅ Build terminé avec succès !'
+            echo ' Build terminé avec succès !'
         }
         failure {
-            echo '❌ Échec du build ou des tests.'
+            echo ' Échec du build ou des tests.'
         }
         always {
-            echo '🏁 Fin du pipeline Jenkins.'
+            echo ' Fin du pipeline Jenkins.'
         }
     }
 }
