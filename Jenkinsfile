@@ -1,7 +1,9 @@
 pipeline {
     /* Utilise une image Docker Maven prête à l’emploi */
     agent any
-
+    tools {
+        maven 'Maven3'
+    }
     /* Étapes principales du pipeline */
     stages {
 
